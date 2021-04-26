@@ -1,0 +1,21 @@
+#!/usr/bin/php
+<?php
+
+$masks = [];
+foreach (array_slice($argv, 1) as $fileName) {
+    $masks = array_merge($masks, explode("\n", trim(file_get_contents($fileName))));
+}
+
+$masks = array_unique($masks);
+
+$result = 0;
+foreach ($masks as $mask) {
+    $result +=
+        (26+26+10+33) ** substr_count($mask, '?a') *
+        26 ** substr_count($mask, '?u') *
+        26 ** substr_count($mask, '?l') *
+        10 ** substr_count($mask, '?d') *
+        33 ** substr_count($mask, '?s');
+}
+
+echo sprintf('%g', $result) . "\n";
