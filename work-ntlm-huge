@@ -21,6 +21,8 @@ fi
 #   2x slower with 400 hashes
 #   4x slower with 400 hashes and wordlist+rules
 
+# ordered from fastest to slowest 
+
 # 7e13
 $HASHCAT -a 3 --increment --increment-min 1 --increment-max 7 $INPUT '?a?a?a?a?a?a?a?a'
 

@@ -26,19 +26,25 @@ fi
 #   2x slower with 400 hashes
 #   4x slower with 400 hashes and wordlist+rules
 
-# 7e13
-$HASHCAT -a 3 --increment --increment-min 1 --increment-max 7 $INPUT '?a?a?a?a?a?a?a'
-# ~1 hour
-$HASHCAT -a 3 $INPUT masks/3600-*.hcmask
+# ordered from fastest to slowest 
 
-# 5e8 x 6e5 = 3e14
-$HASHCAT -a 0 $INPUT passlists/04*.txt -r rules/650k.rule
-# 1e9 x 5e4 = 5e13
-$HASHCAT -a 0 $INPUT passlists/05*.txt -r rules/src/One*.rule
 # 1e10 x 1e2 = 1e12
 $HASHCAT -a 0 $INPUT passlists/07*.txt -r rules/best-128.rule
 
 # 1e9 x 3e4 = 3e13
 $HASHCAT -a 0 $INPUT passlists/05*.txt -r rules/append-30k.rule
+
+# 1e9 x 5e4 = 5e13
+$HASHCAT -a 0 $INPUT passlists/05*.txt -r rules/src/One*.rule
+
+# 7e13
+$HASHCAT -a 3 --increment --increment-min 1 --increment-max 7 $INPUT '?a?a?a?a?a?a?a'
+
 # 1e10 x 1e4 = 1e14
 $HASHCAT -a 0 $INPUT passlists/07*.txt -r rules/append-10k.rule
+
+# 5e8 x 6e5 = 3e14
+$HASHCAT -a 0 $INPUT passlists/04*.txt -r rules/650k.rule
+
+# ~1 hour
+$HASHCAT -a 3 $INPUT masks/3600-*.hcmask
