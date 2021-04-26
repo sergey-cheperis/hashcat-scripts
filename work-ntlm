@@ -43,8 +43,9 @@ $HASHCAT -a 3 --increment --increment-min 1 --increment-max 7 $INPUT '?a?a?a?a?a
 # 1e10 x 1e4 = 1e14
 $HASHCAT -a 0 $INPUT passlists/07*.txt -r rules/append-10k.rule
 
+# ~1 hour
+$HASHCAT -a 3 $INPUT masks/3600-*.hcmask
+
 # 5e8 x 6e5 = 3e14
 $HASHCAT -a 0 $INPUT passlists/04*.txt -r rules/650k.rule
 
-# ~1 hour
-$HASHCAT -a 3 $INPUT masks/3600-*.hcmask
