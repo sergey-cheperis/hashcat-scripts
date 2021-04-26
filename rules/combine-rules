@@ -1,0 +1,31 @@
+#!/usr/bin/php
+<?php
+
+$files = [];
+foreach (array_slice($argv, 1) as $fileName) {
+    $files[] = explode("\n", trim(file_get_contents($fileName)));
+}
+
+if (!$files) {
+    exit;
+}
+
+function process(string $prefix, int $index)
+{
+    global $files;
+    $isLastFile = $index === count($files) - 1;
+    foreach ($files[$index] as $item) {
+        if ($item === ':') {
+            $combined = $prefix;
+        } else {
+            $combined = ($prefix !== '' ? $prefix . ' ' : '') . $item;
+        }
+        if ($isLastFile) {
+            echo ($combined !== '' ? $combined : ':') . "\n";
+        } else {
+            process($combined, $index + 1);
+        }
+    }
+}
+
+process('', 0);

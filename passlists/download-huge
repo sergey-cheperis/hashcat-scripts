@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd "$(dirname "$0")"
+
+if [ ! -f 07-OneWordlistToListThemAll.txt ]
+then
+    wget -c http://web.czz.name/07-OneWordlistToListThemAll.7z \
+        && 7z x 07-OneWordlistToListThemAll.7z \
+        && mv OneWordlistToListThemAll.txt 07-OneWordlistToListThemAll.txt
+fi

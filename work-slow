@@ -1,0 +1,10 @@
+#!/bin/bash
+
+METHOD=${2-9600}
+HASHCAT="./hashcat -m $METHOD"
+INPUT=${1-example-office-2013.txt}
+
+$HASHCAT -S -a 3 --increment --increment-min 1 --increment-max 4 $INPUT '?a?a?a?a?a?a?a'
+$HASHCAT -S -a 3 --increment --increment-min 5 --increment-max 8 $INPUT '?d?d?d?d?d?d?d?d?d?d?d?d'
+
+$HASHCAT -a 0 $INPUT passlists/04*.txt

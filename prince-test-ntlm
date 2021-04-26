@@ -1,0 +1,17 @@
+#!/bin/bash
+
+METHOD=${2-1000}
+HASHCAT="./hashcat -m $METHOD"
+INPUT=${1-hashes.txt}
+
+if [ ! -f $INPUT ]
+then
+    echo Create $INPUT
+    exit
+fi
+
+cat prince-input.txt | utils/expander.bin > temp/prince-input.txt
+
+cat temp/prince-input.txt \
+    | prince/pp64-mac.bin --pw-min=8 --pw-max=16 --save-pos-disable \
+    | $HASHCAT -a 0 $INPUT -r prince/prince_generated.rule

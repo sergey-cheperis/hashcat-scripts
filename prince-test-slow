@@ -1,0 +1,9 @@
+#!/bin/bash
+
+METHOD=${2-9600}
+HASHCAT="./hashcat -m $METHOD"
+INPUT=${1-example-office-2013.txt}
+
+cat prince/1.dic prince/2.dic passlists/04*.txt \
+    | prince/pp64-linux.bin \
+    | $HASHCAT -a 0 $INPUT -r prince/prince_optimized.rule

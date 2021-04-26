@@ -1,0 +1,4 @@
+#!/bin/bash
+
+hashcat -O -w 4 --markov-hcstat2=markov/huge.hcstat2 --potfile-path=potfile $@
+

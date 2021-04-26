@@ -1,0 +1,1 @@
+**3600-8plus.hcmask** is based on *rockyou-3-3600.hcmask*, leaving only masks with length >= 8, and also includes digit sequences between 8 and 12 in length.
