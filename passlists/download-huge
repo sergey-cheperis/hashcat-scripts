@@ -6,5 +6,6 @@ if [ ! -f 07-OneWordlistToListThemAll.txt ]
 then
     wget -c http://web.czz.name/07-OneWordlistToListThemAll.7z \
         && 7z x 07-OneWordlistToListThemAll.7z \
-        && mv OneWordlistToListThemAll.txt 07-OneWordlistToListThemAll.txt
+        && mv OneWordlistToListThemAll.txt 07-OneWordlistToListThemAll.txt \
+        && rm -f 07-OneWordlistToListThemAll.7z
 fi
