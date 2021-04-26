@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cd "$(dirname "$0")"
+
+if [ ! -f 04-hashes-org.txt ]
+then
+    wget -c http://web.czz.name/04-hashes-org.7z \
+        && 7z x 04-hashes-org.7z
+fi
+
+if [ ! -f 05-hashes-org-2019.txt ]
+then
+    wget -c http://web.czz.name/05-hashes-org-2019.7z \
+        && 7z x 05-hashes-org-2019.7z
+fi
